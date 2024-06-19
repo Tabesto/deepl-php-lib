@@ -113,6 +113,7 @@ class DeepL
      * @param array|null      $nonSplittingTags
      * @param null            $outlineDetection
      * @param array|null      $splittingTags
+     * @param string|null     $context
      *
      * @return array
      * @throws DeepLException
@@ -130,7 +131,8 @@ class DeepL
         $preserveFormatting = null,
         array $nonSplittingTags = null,
         $outlineDetection = null,
-        array $splittingTags = null
+        array $splittingTags = null,
+        $context = null
     ) {
         if (is_array($tagHandling)) {
             throw new \InvalidArgumentException('$tagHandling must be of type String in V2 of DeepLLibrary');
@@ -147,6 +149,7 @@ class DeepL
             'split_sentences'     => $splitSentences,
             'preserve_formatting' => $preserveFormatting,
             'outline_detection'   => $outlineDetection,
+            'context'             => $context,
         );
 
         $paramsArray = $this->removeEmptyParams($paramsArray);
