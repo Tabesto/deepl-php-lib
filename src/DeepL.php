@@ -12,9 +12,9 @@ class DeepL
     const API_URL_SCHEMA = 'https';
     /**
      * API BASE URL
-     * https://api.deepl.com/v2/[resource]?auth_key=[yourAuthKey]
+     * https://api.deepl.com/v2/[resource]
      */
-    const API_URL_BASE = '%s://%s/v%s/%s?auth_key=%s';
+    const API_URL_BASE = '%s://%s/v%s/%s';
 
     /**
      * API URL: usage
@@ -248,6 +248,7 @@ class DeepL
         curl_setopt($this->curl, CURLOPT_URL, $url);
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $body);
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, array(sprintf('Authorization: DeepL-Auth-Key %s', $this->authKey)));
 
         $response = curl_exec($this->curl);
 

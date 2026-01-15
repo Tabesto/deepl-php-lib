@@ -53,7 +53,7 @@ class DeepLTest extends PHPUnit_Framework_TestCase
     public function testBuildBaseUrl()
     {
         $authKey     = '123456';
-        $expectedUrl = 'https://api.deepl.com/v2/translate?auth_key='.$authKey;
+        $expectedUrl = 'https://api.deepl.com/v2/translate';
         $deepl       = new DeepL($authKey);
         $buildUrl    = self::getMethod('\BabyMarkt\DeepL\DeepL', 'buildBaseUrl');
         $return      = $buildUrl->invokeArgs($deepl, array());
@@ -68,7 +68,7 @@ class DeepLTest extends PHPUnit_Framework_TestCase
     {
         $authKey        = '123456';
         $host           = 'myownhost.dev';
-        $expectedString = 'https://'.$host.'/v2/translate?auth_key='.$authKey;
+        $expectedString = 'https://'.$host.'/v2/translate';
         $deepl          = new DeepL($authKey, 2, $host);
         $buildUrl       = self::getMethod('\BabyMarkt\DeepL\DeepL', 'buildBaseUrl');
         $return         = $buildUrl->invokeArgs($deepl, array());
